@@ -8,7 +8,7 @@
 :root {
     --main-color: #064776;
     --accent-color: #4997d0;
-    --section-padding: 60px;
+    --section-padding: 40px;
     --text-color: #333;
 }
 
@@ -51,19 +51,18 @@ body {
 
 /* Header */
 .header {
-    padding: 30px;
     background-color:#fff;
 }
 
 .header .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     position: relative;
 }
 
 .header .logo {
-    width: 200px;
+    width: 50px;
+    height: 50px;
 }
 
 .header .logo:hover{
@@ -73,60 +72,83 @@ body {
     z-index: 1;
   }
 
-.header .links {
-    position: absolute;
-    right: 2px; /* Move span to the right */
-    top: 50%; /* Vertically center span */
-    transform: translateY(-50%);
-}
+  
+.links:hover .icon span:nth-child(2) {
+    width: 100%;
+  }
+  
+.links .icon {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+  }
 
-.header .links span.icon {
-    display: inline-block;
-    cursor: pointer;
-}
-
-.header .links span.icon span {
-    display: block;
-    height: 3px;
-    background-color: #064776;
-    margin: 5px 0;
-    width: 25px;
-}
-
-/* Dropdown menu styling */
-.header .links ul {
+  .links .icon span {
+    background-color: var(--main-color);
+    margin-bottom: 5px;
+    height: 2px;
+  }
+.links .icon span:first-child {
+    width: 100%;
+  }
+.links .icon span:nth-child(2) {
+    width: 60%;
+    transition: 0.3s;
+  }
+.links .icon span:last-child {
+    width: 100%;
+  }
+.links ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #064776;
+    background-color: var(--accent-color);
     position: absolute;
     right: 0;
-    top: calc(100% + 10px);
+    min-width: 200px;
+    top: calc(100% + 15px);
     display: none;
-}
-
-.header .links:hover ul {
+    z-index: 1;
+  }
+.links ul::before {
+    content: "";
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+  }
+.links:hover ul {
     display: block;
-}
-
-.header .links ul li a {
+  }
+.links ul li a {
     display: block;
     padding: 15px;
     text-decoration: none;
     color: #ddd;
     transition: 0.3s;
-}
+  }
+.links ul li a:hover {
+    padding-left: 25px;
+    text-decoration: underline;
+    color: var(--main-color);
+  }
+.links ul li:not(:last-child) a {
+    border-bottom: 1px solid #ddd;
+  }
 
-.header .links ul li a:hover {
-    background-color: #fff;
-    color: #064776;
-}
+
 
 /* Dashboard Styling */
 .dashboard {
     padding: var(--section-padding) 0;
     background-color: #064776;
     text-align: center;
+    padding-bottom: 70px;
 }
 
 .dashboard h2 {
